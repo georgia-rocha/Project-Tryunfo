@@ -16,7 +16,7 @@ class Form extends React.Component {
       cardRare,
       cardTrunfo } = this.props;
     return (
-      <form>
+      <form id="form-container">
         <label htmlFor="cardName">
           Nome
           <input
@@ -85,13 +85,13 @@ class Form extends React.Component {
             value={ cardRare }
             onChange={ onInputChange }
           >
-
             <option>normal</option>
             <option>raro</option>
             <option>muito raro</option>
           </select>
         </label>
         <label htmlFor="cardTrunfo">
+          Super Trunfo
           <input
             type="checkbox"
             data-testid="trunfo-input"

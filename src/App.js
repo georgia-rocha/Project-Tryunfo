@@ -1,14 +1,17 @@
 import React from 'react';
+import './index.css';
 import Form from './components/Form';
+import Card from './components/Card';
+import imgCard from './imgCard.jpg';
 
 class App extends React.Component {
   state = {
-    cardName: '',
+    cardName: 'Nome da carta',
     cardDescription: 'Descrição da carta',
-    cardAttr1: '',
-    cardAttr2: '',
-    cardAttr3: '',
-    cardImage: '',
+    cardAttr1: '12',
+    cardAttr2: '34',
+    cardAttr3: '56',
+    cardImage: imgCard,
     cardRare: 'raro',
     cardTrunfo: false,
     isSaveButtonDisabled: false,
@@ -31,11 +34,16 @@ class App extends React.Component {
     return (
       <div>
         <h1>Tryunfo</h1>
+        <div id="div-principal">
         <Form
           { ...this.state }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
-        />
+          />
+        <Card
+          { ...this.state }
+          />
+          </div>
       </div>
     );
   }
