@@ -17,9 +17,9 @@ class Form extends React.Component {
       cardTrunfo,
       hasTrunfo } = this.props;
     return (
-      <form id="form-container">
+      <form id="form-container" onSubmit={ onSaveButtonClick }>
         <label htmlFor="cardName">
-          {!hasTrunfo && 'Nome' }
+          { !hasTrunfo && 'Nome' }
           <input
             type="text"
             name="cardName"
@@ -103,11 +103,10 @@ class Form extends React.Component {
           />
         </label>
         <button
-          type="button"
+          type="submit"
           data-testid="save-button"
           name="button"
           disabled={ isSaveButtonDisabled }
-          onClick={ onSaveButtonClick }
         >
           Salvar
         </button>
