@@ -14,11 +14,12 @@ class Form extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
-      cardTrunfo } = this.props;
+      cardTrunfo,
+      hasTrunfo } = this.props;
     return (
       <form id="form-container">
         <label htmlFor="cardName">
-          Nome
+          {!hasTrunfo && 'Nome' }
           <input
             type="text"
             name="cardName"
