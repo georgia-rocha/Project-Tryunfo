@@ -32,6 +32,16 @@ class App extends React.Component {
     }), this.validationButton);
   };
 
+  validationTrunfo = () => {
+    const { cardTrunfo } = this.state;
+
+    if (cardTrunfo) {
+      this.setState(() => ({
+        hasTrunfo: true,
+      }));
+    }
+  };
+
   validationButton = () => {
     const { cardName,
       cardDescription,
@@ -104,6 +114,7 @@ class App extends React.Component {
       cardSave: [...cardSave, newCard],
       ...stateInitial,
     }));
+    this.validationTrunfo();
   };
 
   render() {

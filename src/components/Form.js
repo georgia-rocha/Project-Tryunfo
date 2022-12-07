@@ -19,7 +19,7 @@ class Form extends React.Component {
     return (
       <form id="form-container" onSubmit={ onSaveButtonClick }>
         <label htmlFor="cardName">
-          { !hasTrunfo && 'Nome' }
+          Nome
           <input
             type="text"
             name="cardName"
@@ -93,14 +93,17 @@ class Form extends React.Component {
         </label>
         <label htmlFor="cardTrunfo">
           Super Trunfo
-          <input
+          {
+            hasTrunfo ? <p>Você já tem um Super Trunfo em seu baralho</p> :
+            <input
             type="checkbox"
             data-testid="trunfo-input"
             name="cardTrunfo"
             value={ cardTrunfo }
             checked={ cardTrunfo }
             onChange={ onInputChange }
-          />
+            />
+          }
         </label>
         <button
           type="submit"
