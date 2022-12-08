@@ -3,7 +3,7 @@
   justify-content: space-around;
 }
 
-#card-container {
+.card-container {
   display: flex;
   flex-direction: column;
   width: 25%;

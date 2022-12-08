@@ -14,7 +14,7 @@ class Card extends React.Component {
       cardTrunfo } = this.props;
 
     return (
-      <div id="card-container">
+      <div className="card-container">
         <h1 data-testid="name-card">{ cardName }</h1>
         <img src={ cardImage } alt={ cardName } data-testid="image-card" />
         <p data-testid="description-card">{ cardDescription }</p>

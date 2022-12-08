@@ -34,10 +34,15 @@ class App extends React.Component {
 
   validationTrunfo = () => {
     const { cardTrunfo } = this.state;
+    console.log('sss');
 
     if (cardTrunfo) {
       this.setState(() => ({
         hasTrunfo: true,
+      }));
+    } else {
+      this.setState(() => ({
+        hasTrunfo: false,
       }));
     }
   };
@@ -117,6 +122,17 @@ class App extends React.Component {
     this.validationTrunfo();
   };
 
+  removeCard = ({ target }) => {
+    const cardName = target.id;
+    const { cardSave } = this.state;
+    const verifyDeleted = cardSave.filter((card) => card.cardName !== cardName);
+
+    this.setState((estadoAnterior) => ({
+      ...estadoAnterior,
+      cardSave: verifyDeleted,
+    }), this.validationTrunfo);
+  };
+
   render() {
     const { cardSave } = this.state;
     return (
@@ -130,32 +146,44 @@ class App extends React.Component {
           />
           <Card
             { ...this.state }
+            removeCard={ this.removeCard }
           />
         </div>
-        {
-          cardSave.map(({
-            cardName,
-            cardDescription,
-            cardAttr1,
-            cardAttr2,
-            cardAttr3,
-            cardImage,
-            cardRare,
-            cardTrunfo,
-          }) => (
-            <Card
-              key={ Math.random() }
-              cardName={ cardName }
-              cardDescription={ cardDescription }
-              cardAttr1={ cardAttr1 }
-              cardAttr2={ cardAttr2 }
-              cardAttr3={ cardAttr3 }
-              cardImage={ cardImage }
-              cardRare={ cardRare }
-              cardTrunfo={ cardTrunfo }
-            />
-          ))
-        }
+        <ul className="cards">
+          {
+            cardSave.map(({
+              cardName,
+              cardDescription,
+              cardAttr1,
+              cardAttr2,
+              cardAttr3,
+              cardImage,
+              cardRare,
+              cardTrunfo,
+            }) => (
+              <li key={ cardName }>
+                <Card
+                  cardName={ cardName }
+                  cardDescription={ cardDescription }
+                  cardAttr1={ cardAttr1 }
+                  cardAttr2={ cardAttr2 }
+                  cardAttr3={ cardAttr3 }
+                  cardImage={ cardImage }
+                  cardRare={ cardRare }
+                  cardTrunfo={ cardTrunfo }
+                />
+                <button
+                  id={ cardName }
+                  type="button"
+                  data-testid="delete-button"
+                  onClick={ this.removeCard }
+                >
+                  Excluir
+                </button>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     );
   }
